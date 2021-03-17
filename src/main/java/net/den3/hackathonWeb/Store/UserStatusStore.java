@@ -9,7 +9,7 @@ public class UserStatusStore implements IUserStatusStore{
 
     @Override
     public boolean isBusy(String userUUID) {
-        if(!jedis.exists(userUUID)){
+        if(!jedis.exists("busy."+userUUID)){
             return false;
         }
         return "true".equalsIgnoreCase(jedis.get("busy."+userUUID));
