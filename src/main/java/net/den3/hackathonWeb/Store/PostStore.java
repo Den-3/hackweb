@@ -43,7 +43,11 @@ public class PostStore implements IPostStore{
 
     private List<Post> _getPosts(){
         List<Post> posts = new ArrayList<>();
-        long size = jedis.llen("posts");
+        Long size = jedis.llen("posts");
+
+        if(size == null || size == 0){
+            return posts;
+        }
 
         for (long i = 0; i < size; i++) {
             String key = jedis.lindex("posts",i);
