@@ -26,36 +26,7 @@ public class Main {
         return 7000;
     }
 
-    private static Jedis getConnection() {
-        try {
-            TrustManager bogusTrustManager = new X509TrustManager() {
-                public X509Certificate[] getAcceptedIssuers() {
-                    return null;
-                }
-
-                public void checkClientTrusted(X509Certificate[] certs, String authType) {
-                }
-
-                public void checkServerTrusted(X509Certificate[] certs, String authType) {
-                }
-            };
-
-            SSLContext sslContext = SSLContext.getInstance("SSL");
-            sslContext.init(null, new TrustManager[]{bogusTrustManager}, new java.security.SecureRandom());
-
-            HostnameVerifier bogusHostnameVerifier = (hostname, session) -> true;
-
-            return new Jedis(URI.create(System.getenv("REDIS_URL")),
-                    sslContext.getSocketFactory(),
-                    sslContext.getDefaultSSLParameters(),
-                    bogusHostnameVerifier);
-
-        } catch (NoSuchAlgorithmException | KeyManagementException e) {
-            throw new RuntimeException("Cannot obtain Redis connection!", e);
-        }
-    }
-
-    public final static Jedis jedis = getConnection();
+    public final static Jedis jedis = new Jedis(System.getenv("REDIS_URL"));
 
     public final static ILoginStore loginStore = new LoginStore();
     public final static IUserStore userStore = new UserStore();
