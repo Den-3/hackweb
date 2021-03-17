@@ -1,21 +1,17 @@
 <div class="form-wrapper">
     <h1>新規登録</h1>
-    <form>
+    <form method="POST" action="/register">
       <div class="form-item">
-        <label for="email"></label>
         <input type="email" name="email" required="required" placeholder="メールアドレス"></input>
       </div>
       <div class="form-item">
-        <label for="nickname"></label>
         <input type="nickname" name="nickname" required="required" placeholder="ニックネーム"></input>
       </div>
       <div class="form-item">
-        <label for="password"></label>
         <input type="password" name="password" required="required" placeholder="パスワード"></input>
       </div>
       <div class="form-item">
-        <label for="repassword"></label>
-        <input type="repassword" name="repassword" required="required" placeholder="パスワード(再確認)"></input>
+        <input type="password" name="repassword" required="required" placeholder="パスワード(再確認)"></input>
       </div>
       <div class="button-panel2">
         <input type="submit" class="button2" title="新規登録" value="新規登録"></input>
