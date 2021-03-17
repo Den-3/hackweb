@@ -72,16 +72,18 @@ public class UserStore implements IUserStore{
 
             final String createTable = "create table users (" +
                     " uuid varchar(30) unique," +
-                    " mail varchar(255)" +
-                    " password varchar(255)" +
-                    " nick varchar(255)" +
+                    " mail varchar(255)," +
+                    " password varchar(255)," +
+                    " nick varchar(255)," +
                     " icon varchar(255)" +
                     ");";
 
             PreparedStatement ps = hikari.getConnection().prepareStatement(createTable);
             ps.executeQuery();
 
-        }catch (SQLException ignore){}
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     public void closeDB(){
