@@ -9,10 +9,11 @@ public class RegisterPage {
         });
 
         javalin.post("/register",ctx->{
-            ctx.formParam("mail");
-            ctx.formParam("pass");
-            ctx.formParam("confirm");
-            ctx.formParam("nick");
+            String mail =  ctx.formParam("mail");
+            String pass =ctx.formParam("pass");
+            String confirm =ctx.formParam("confirm");
+            String nick =ctx.formParam("nick");
+            ctx.result(mail+" "+pass+" "+confirm+" "+nick);
         });
     }
 }
