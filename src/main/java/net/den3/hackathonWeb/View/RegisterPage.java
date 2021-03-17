@@ -22,7 +22,7 @@ public class RegisterPage {
                 ctx.redirect("/register");
                 return;
             }
-            if(!(mail.isEmpty() || pass.isEmpty() || confirm.isEmpty() || nick.isEmpty())){
+            if(mail.isEmpty() || pass.isEmpty() || confirm.isEmpty() || nick.isEmpty()){
                 ctx.redirect("/register");
                 return;
             }
