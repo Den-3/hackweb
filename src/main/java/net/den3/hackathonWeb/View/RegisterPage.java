@@ -7,5 +7,12 @@ public class RegisterPage {
         javalin.get("/register",ctx->{
             ctx.render("/WEB-INF/templates/register.html");
         });
+
+        javalin.post("/register",ctx->{
+            ctx.formParam("mail");
+            ctx.formParam("pass");
+            ctx.formParam("confirm");
+            ctx.formParam("nick");
+        });
     }
 }

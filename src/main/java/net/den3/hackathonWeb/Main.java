@@ -4,6 +4,7 @@ import io.javalin.Javalin;
 import net.den3.hackathonWeb.Store.*;
 import net.den3.hackathonWeb.View.LoginPage;
 import net.den3.hackathonWeb.View.RegisterPage;
+import net.den3.hackathonWeb.View.SelfProfile;
 import net.den3.hackathonWeb.View.TopPage;
 import redis.clients.jedis.Jedis;
 
@@ -15,9 +16,6 @@ import java.net.URI;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
     private static int getHerokuAssignedPort() {
@@ -69,6 +67,8 @@ public class Main {
         new LoginPage(app);
         new TopPage(app);
         new RegisterPage(app);
+        new SelfProfile(app);
+
 
         app.after(ctx->{ctx.res.setCharacterEncoding("UTF-8");});
     }
