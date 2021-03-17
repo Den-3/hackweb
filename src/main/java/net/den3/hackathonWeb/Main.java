@@ -69,5 +69,7 @@ public class Main {
         new LoginPage(app);
         new TopPage(app);
         new RegisterPage(app);
+
+        app.after(ctx->{ctx.res.setCharacterEncoding("UTF-8");});
     }
 }
