@@ -12,7 +12,12 @@
       <div class="button-panel">
         <input type="submit" class="button" title="サインイン" value="サインイン"></input>
       </div>
-      <div class="button-panel2">
+        <script>
+            function goRegister() {
+                location.href = "/register";
+            }
+        </script>
+      <div class="button-panel2" onclick="goRegister()">
         <input type="submit" class="button2" title="新規登録" value="新規登録"></input>
       </div>
     </form>
