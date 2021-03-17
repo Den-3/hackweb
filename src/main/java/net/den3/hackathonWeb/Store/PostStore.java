@@ -1,6 +1,5 @@
 package net.den3.hackathonWeb.Store;
 
-import net.den3.hackathonWeb.Entity.Facility;
 import net.den3.hackathonWeb.Entity.Post;
 import net.den3.hackathonWeb.Main;
 import redis.clients.jedis.Jedis;
@@ -23,7 +22,7 @@ public class PostStore implements IPostStore{
         String key = "facility."+post.getUUID();
         jedis.expire(key,60*60);
 
-        jedis.rpush(key,post.getFacility().name());
+        jedis.rpush(key,post.getFacility());
         jedis.expire(key,60*60);
 
         key = "time."+post.getUUID();
@@ -58,7 +57,7 @@ public class PostStore implements IPostStore{
             if(user == null || time == null || facility == null){
                 continue;
             }
-            posts.add(new Post(user, Facility.valueOf(facility),time,date));
+            posts.add(new Post(user,facility,time,date));
         }
         return posts;
     }

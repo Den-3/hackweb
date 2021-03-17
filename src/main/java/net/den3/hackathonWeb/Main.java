@@ -3,10 +3,7 @@ package net.den3.hackathonWeb;
 import io.javalin.Javalin;
 import net.den3.hackathonWeb.Entity.IUser;
 import net.den3.hackathonWeb.Store.*;
-import net.den3.hackathonWeb.View.LoginPage;
-import net.den3.hackathonWeb.View.RegisterPage;
-import net.den3.hackathonWeb.View.SelfProfile;
-import net.den3.hackathonWeb.View.TopPage;
+import net.den3.hackathonWeb.View.*;
 import redis.clients.jedis.Jedis;
 
 import javax.net.ssl.HostnameVerifier;
@@ -44,6 +41,7 @@ public class Main {
         new TopPage(app);
         new RegisterPage(app);
         new SelfProfile(app);
+        new PlaceUser(app);
 
         app.get("/debug",ctx->{
             Map<String, List<IUser>> json = new HashMap<>();

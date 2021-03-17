@@ -12,12 +12,12 @@ public class Post {
     private final static SimpleDateFormat sdf = new SimpleDateFormat("d日 hh時 mm分");
 
     Long date;
-    Facility facility;
+    String facility;
     String time;
     String userid;
     String uuid = UUID.randomUUID().toString();
 
-    public Facility getFacility() {
+    public String getFacility() {
         return facility;
     }
 
@@ -41,7 +41,7 @@ public class Post {
         return this.uuid;
     }
 
-    public Post(String userUUID, Facility facility){
+    public Post(String userUUID,String facility){
         this.userid = userUUID;
         this.facility = facility;
         Date d = new Date();
@@ -50,7 +50,7 @@ public class Post {
 
     }
 
-    public Post(String userUUID, Facility facility,String time,Long date){
+    public Post(String userUUID, String facility,String time,Long date){
         this.userid = userUUID;
         this.facility = facility;
         this.time = time;

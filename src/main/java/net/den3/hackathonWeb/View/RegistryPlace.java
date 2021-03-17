@@ -7,5 +7,9 @@ public class RegistryPlace {
         javalin.get("/place-registry",ctx->{
             ctx.render("/WEB-INF/templates/xxx.html");
         });
+
+        javalin.post("/place-registry",ctx->{
+
+        });
     }
 }
