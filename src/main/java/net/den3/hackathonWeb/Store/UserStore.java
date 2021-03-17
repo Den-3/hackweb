@@ -17,8 +17,6 @@ public class UserStore implements IUserStore{
     final Queue<IUser> addQueue = new LinkedList<>();
 
     private final String GET_ALL_SQL = "SELECT * FROM users";
-    private final String GET_ID_SQL = "SELECT * FROM users WHERE uuid = ?";
-    private final String GET_MAIL_SQL = "SELECT * FROM users WHERE mail = ?";
     private final String DELETE_SQL = "DELETE FROM users WHERE uuid = ?;";
     private final String INSERT_SQL = "INSERT INTO users (uuid,mail,password,nick,icon) VALUES (?,?,?,?,?);";
     private final String UPDATE_SQL = "UPDATE users SET mail = ?,password = ?,nick = ?,icon = ? WHERE uuid = ?";
@@ -57,7 +55,7 @@ public class UserStore implements IUserStore{
                 };
 
                 Timer timer = new Timer();
-                timer.schedule(task, 1000*30);
+                timer.schedule(task, 1000*10);
             }).start();
 
         }catch (URISyntaxException e){
