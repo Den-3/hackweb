@@ -52,7 +52,9 @@ public class UserStore implements IUserStore{
             new Thread(()->{
                 TimerTask task = new TimerTask() {
                     public void run() {
+                        System.out.println("User add task...");
                         Optional.ofNullable(addQueue.poll()).ifPresent(u->{
+                            System.out.println("User added!");
                             _addUser(u);
                         });
                     }
