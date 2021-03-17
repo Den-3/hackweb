@@ -69,12 +69,5 @@ public class Main {
         new LoginPage(app);
         new TopPage(app);
         new RegisterPage(app);
-
-        app.get("/", ctx -> {
-            Map<String, Object> model = new HashMap<>();
-            model.put("message", "Hello World");
-            model.put("now", LocalDateTime.now());
-            ctx.render("/WEB-INF/templates/test.html", model);
-        });
     }
 }
