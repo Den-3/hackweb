@@ -29,8 +29,6 @@ public class LoginPage {
                 return;
             }
 
-            System.out.println("Login PHASE 1");
-
             Optional<IUser> user = Main.userStore.getUserByMail(mail);
 
             if(!user.isPresent()){
@@ -38,9 +36,11 @@ public class LoginPage {
                 return;
             }
 
-            System.out.println("Login PHASE 2");
-
             String hash = HashGenerator.getSafetyPassword(pass,user.get().getUUID());
+
+            System.out.println(user.get().getUUID());
+            System.out.println(user.get().getPass());
+            System.out.println("hash: "+hash);
 
             if(!hash.equalsIgnoreCase(pass)){
                 ctx.redirect("/login");
