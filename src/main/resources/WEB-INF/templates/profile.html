@@ -1,0 +1,102 @@
+<html>
+    <style>
+        p,a{
+            font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+        }
+        body {
+            margin: 0;
+            width: 100%;
+        }
+
+        .top-bar{
+            background: #D36262;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar,
+        .main {
+            max-height: 100vh;
+        }
+
+        .sidebar {
+            overflow: hidden;
+            min-width: 300px;
+            background: #8896C8;
+        }
+
+        .sidebar:hover {
+            overflow: auto;
+        }
+
+        .main {
+            overflow: auto;
+            flex: 2;
+            background: #fff;
+        }
+
+        .box {
+            height: 150vh;
+        }
+
+        .side-log-item{
+            background: #9AD4FE;
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .avatar {
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+        .big-avatar {
+            display: inline-block;
+            vertical-align: middle;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+    </style>
+    <body>
+        <div class="top-bar">
+            <div>
+                <div style="text-align: right;margin-right: 10px;margin-bottom: 2px">
+                    <img onclick="onAvaterClicked();" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+                    <script>
+                        var p = document.getElementById('self-avatar');
+                        function onAvaterClicked(){
+                            document.location = "/profile";
+                        }
+                        p.attachEvent('onclick', onAvaterClicked());
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div style="background: white;">
+            <div style="text-align: center; margin-top: 50px">
+                <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="big-avatar">
+            </div>
+            <div style="text-align: center; margin-top: 30px">
+                <p>User Name</p>
+            </div>
+            <div style="text-align: center; margin-top: 30px">
+                <p>ステータス: </p>
+            </div>
+            <div style="text-align: center; margin-top: 30px">
+                <p>最後に居た場所: </p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="/public/bootstrap/css/bootstrap.min.css" />
+    </head>
+    <body class="top-bar">
+
+        <div>
+            <div>
+                <div style="text-align: right;margin-right: 10px;margin-top: 2px;margin-bottom: 2px">
+                    <img onclick="onAvaterClicked();" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+                    <script>
+                        var p = document.getElementById('self-avatar');
+                        function onAvaterClicked(){
+                            document.location = "/profile";
+                        }
+                        p.attachEvent('onclick', onAvaterClicked());
+                    </script>
+                </div>
+            </div>
+        </div>
+        <style>
+            p,a{
+                font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+            }
+            body {
+                margin: 0;
+                width: 100%;
+            }
+
+            .top-bar{
+                background: #D36262;
+                width: 100%;
+            }
+
+            .container {
+                display: flex;
+                height: 100vh;
+            }
+
+            .sidebar,
+            .main {
+                max-height: 100vh;
+            }
+
+            .sidebar {
+                overflow: hidden;
+                min-width: 300px;
+                background: #8896C8;
+            }
+
+            .sidebar:hover {
+                overflow: auto;
+            }
+
+            .main {
+                overflow: auto;
+                flex: 2;
+                background: #fff;
+            }
+
+            .box {
+                height: 150vh;
+            }
+
+            .side-log-item{
+                background: #9AD4FE;
+                margin-top: 5px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .avatar {
+                vertical-align: middle;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin-top: 5px;
+                margin-left: 10px;
+                margin-bottom: 5px;
+            }
+
+        </style>
+        <div class="container">
+            <div class="main">
+            </div>
+            <div class="sidebar">
+                <div>
+                    <% for (var i = 1; i < 10; i++) { %>
+                        <div class="side-log-item" >
+                            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+                            <a href="/user/10fu3" style="display: inline-block;">とうふさん</a>
+                            <p style="margin: 10px">に入りました!</p>
+                            <p style="margin: 10px">03/16 15:23</p>
+                        </div>
+
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
