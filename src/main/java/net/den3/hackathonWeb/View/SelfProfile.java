@@ -15,8 +15,9 @@ public class SelfProfile {
             if(session != null && Main.loginStore.isLoggedIn(session)){
                 Optional<IUser> u = Main.userStore.getUser(Main.loginStore.getUserUUID(session));
                 if(u.isPresent()){
-                    Map<String,IUser> self = new HashMap<>();
-                    self.put("self",u.get());
+                    Map<String,String> self = new HashMap<>();
+                    System.out.println("Nickname debug: "+u.get().getNick());
+                    self.put("userName",u.get().getNick());
                     ctx.render("/WEB-INF/templates/self_profile.html",self);
                     return;
                 }
