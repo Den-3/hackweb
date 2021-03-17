@@ -90,7 +90,7 @@
         <p th:text="|ユーザー名: ${userName}|"></p>
     </div>
     <div style="text-align: center; margin-top: 30px">
-        <p>ステータス: </p>
+        <p th:text="|ステータス: ${busy}|"></p>
         <div onclick="onStatusChangeClicked();" style="background: darkgrey; border-radius: 5px; width: 150px; height: 30px; display: inline-block;">
             <p style="margin: 0px">ではない</p>
             <script>
