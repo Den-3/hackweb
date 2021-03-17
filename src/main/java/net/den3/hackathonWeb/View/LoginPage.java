@@ -38,16 +38,10 @@ public class LoginPage {
 
             String hash = HashGenerator.getSafetyPassword(pass,user.get().getUUID());
 
-            System.out.println(user.get().getUUID());
-            System.out.println(user.get().getPass());
-            System.out.println("hash: "+hash);
-
-            if(!hash.equalsIgnoreCase(pass)){
+            if(!hash.equalsIgnoreCase(user.get().getPass())){
                 ctx.redirect("/login");
                 return;
             }
-
-            System.out.println("Login PHASE 3");
 
             String session = UUID.randomUUID().toString();
 
