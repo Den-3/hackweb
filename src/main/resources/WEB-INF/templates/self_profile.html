@@ -100,11 +100,14 @@
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(data),
+                        body: JSON.stringify({}),
                     })
-                    .then(response => response.json())
-                    .then(data => {
-                        location.reload();
+                    .then(response => {
+                        if(response.ok){
+                            location.reload();
+                        }else{
+                            alert("通信エラーが発生しました")
+                        }
                     })
                     .catch((error) => {
                         alert("通信エラーが発生しました")
