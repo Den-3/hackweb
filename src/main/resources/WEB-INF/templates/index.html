@@ -114,28 +114,25 @@
                         <img src="./entry-button.png" alt="居場所登録ボタン" class="entry-button">
                         <p></p>
                     </div>
-                    <% for (var i = 0; i < 10; ++i) { %>
-                        <div class="location-block">
-                            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="斎藤記念館" class="location-icon">
-                            <p>斎藤記念館</p>
-                        </div>
-                    <% } %>
-                    <% for (var i = 0; i < 10+1; ++i) { %>
+                   <div class="location-block" th:each="i : ${#numbers.sequence(0, 9)}">
+                        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="斎藤記念館" class="location-icon">
+                        <p>斎藤記念館</p>
+                    </div>
+                    <div th:each="i : ${#numbers.sequence(0, 9)}">
                         <div class="empty-block"></div>
-                    <% } %>
+                    </div>
                 </div>
             </div>
             <div class="sidebar">
                 <div>
-                    <% for (var i = 1; i < 10; i++) { %>
+                    <div th:each="item : ${ logs }">
                         <div class="side-log-item" >
                             <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
-                            <a href="/user/10fu3" style="display: inline-block;">とうふさん</a>
+                            <a href="/user/" style="display: inline-block;" th:text="item.getUser().get().getNick()"></a>
                             <p style="margin: 10px">に入りました!</p>
-                            <p style="margin: 10px">03/16 15:23</p>
+                            <p style="margin: 10px" th:text="item.getTime()"></p>
                         </div>
-
-                    <% } %>
+                    </div>
                 </div>
             </div>
         </div>
