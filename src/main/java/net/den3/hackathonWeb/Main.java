@@ -57,11 +57,11 @@ public class Main {
         }
     }
 
+    public final static Jedis jedis = getConnection();
 
     public final static ILoginStore loginStore = new LoginStore();
     public final static IUserStore userStore = new UserStore();
     public final static IPostStore logStore = new PostStore();
-    public final static Jedis jedis = getConnection();
 
     public static void main(String[] args) {
         Javalin app = Javalin.create().start(getHerokuAssignedPort());
