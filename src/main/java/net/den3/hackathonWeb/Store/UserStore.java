@@ -61,7 +61,7 @@ public class UserStore implements IUserStore{
                 };
 
                 Timer timer = new Timer();
-                timer.schedule(task, 1000*10);
+                timer.schedule(task, 0,1000*10);
             }).start();
 
         }catch (URISyntaxException e){
