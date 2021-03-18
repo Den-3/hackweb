@@ -89,6 +89,24 @@
             doc.insertBefore(newOption, null);
             return;
         }
+        function buttonPush(){
+            const location_index = document.getElementById("location_droplist").value;
+            const detail_location_index = document.getElementById("detail_location_droplist").value;
+            const fd = new FormData();
+            fd.set("name", json_data[location_index].name);
+            fd.set("floor", json_data[location_index].floor[detail_location_index]);
+            fetch("/place-registry", {
+                method: "POST",
+                body: fd
+            })
+            .then((response) => {
+                if(response.ok){
+                    location.href = "/";
+                }else{
+                    alert("送信に失敗しました");
+                    location.href = "/place";
+                }
+            });
         for (let i = 0; i < detail_locations.length; ++i){
             const detail_location = detail_locations[i];
             let newOption = document.createElement("option");
