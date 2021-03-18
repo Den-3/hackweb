@@ -5,7 +5,7 @@ import redis.clients.jedis.Jedis;
 
 
 public class LoginStore implements ILoginStore{
-    final Jedis jedis = Main.jedis;
+    final Jedis jedis = Main.getJedis();
 
 
     /**

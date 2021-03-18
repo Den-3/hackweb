@@ -19,6 +19,16 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
+
+    public static Jedis getJedis(){
+        try{
+            jedis.ping("Hello!");
+        }catch (Exception e){
+            jedis = new Jedis(System.getenv("REDIS_URL"));
+        }
+        return jedis;
+    }
+
     private static int getHerokuAssignedPort() {
         String herokuPort = System.getenv("PORT");
         if (herokuPort != null) {
@@ -27,7 +37,7 @@ public class Main {
         return 7000;
     }
 
-    public final static Jedis jedis = new Jedis(System.getenv("REDIS_URL"));
+    private static Jedis jedis = new Jedis(System.getenv("REDIS_URL"));
 
     public final static ILoginStore loginStore = new LoginStore();
     public final static IUserStore userStore = new UserStore();
@@ -36,6 +46,7 @@ public class Main {
 
     public static void main(String[] args) {
         Javalin app = Javalin.create().start(getHerokuAssignedPort());
+
 
         new LoginPage(app);
         new TopPage(app);

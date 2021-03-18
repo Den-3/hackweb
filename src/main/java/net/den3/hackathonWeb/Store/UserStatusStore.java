@@ -5,7 +5,7 @@ import redis.clients.jedis.Jedis;
 
 public class UserStatusStore implements IUserStatusStore{
 
-    final Jedis jedis = Main.jedis;
+    final Jedis jedis = Main.getJedis();
 
     @Override
     public boolean isBusy(String userUUID) {

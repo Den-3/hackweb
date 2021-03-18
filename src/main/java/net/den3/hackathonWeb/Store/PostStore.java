@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PostStore implements IPostStore{
-    final Jedis jedis = Main.jedis;
+    final Jedis jedis = Main.getJedis();
 
     List<Post> posts;
 
