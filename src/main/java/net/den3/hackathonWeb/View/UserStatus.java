@@ -28,8 +28,9 @@ public class UserStatus {
             if(!user.isPresent()){
                 return;
             }
-            Map<String,IUser> profile = new HashMap<>();
-            profile.put("profile",user.get());
+            Map<String,String> profile = new HashMap<>();
+            profile.put("nick",user.get().getNick());
+            profile.put("status",Main.statusStore.isBusy(user.get().getUUID()) ? "授業中" : "暇");
             ctx.render("/WEB-INF/templates/profile.html",profile);
         });
     }
