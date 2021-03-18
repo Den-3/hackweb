@@ -116,16 +116,11 @@
             <div class="main">
                 <div class="location-container">
                     <div class="location-block">
-                        <a href="./entry_location.html">
+                        <a href="/place">
                             <img src="https://i.imgur.com/G6A9Qw6.png" alt="居場所登録ボタン" class="entry-button">
                         </a>
                         <p></p>
                     </div>
-                    <script>
-                        function registry(){
-                            document.location = "/place";
-                        }
-                    </script>
                     <div class="location-block" th:each="i : ${ facilities }">
                         <a th:href="@{|place/${i}}|">
                             <img src="https://www.w3schools.com/howto/img_avatar.png" alt="" class="location-icon">
