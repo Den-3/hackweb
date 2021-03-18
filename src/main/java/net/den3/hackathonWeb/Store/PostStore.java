@@ -59,7 +59,7 @@ public class PostStore implements IPostStore{
             String facility = jedis.get("facility."+key);
             String floor = jedis.get("floor."+key);
             Long date = Long.parseLong(jedis.get("date."+key));
-            if(user == null || time == null || facility == null){
+            if(user == null || time == null || facility == null || floor == null){
                 continue;
             }
             posts.add(new Post(user,facility,floor,time,date));
