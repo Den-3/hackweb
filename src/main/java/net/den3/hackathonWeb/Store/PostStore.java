@@ -9,20 +9,35 @@ import java.util.List;
 
 public class PostStore implements IPostStore{
     final Jedis jedis = Main.getJedis();
-
+    final List<String> removeArray = new ArrayList<>();
     List<Post> posts;
 
     public PostStore(){
         posts = _getPosts();
     }
 
-    private void removePose(Post post){
+    private synchronized void removePose(Post post){
         String postID = jedis.get("user-id."+post.getUserID());
         if(postID == null){
             return;
         }
 
-        jedis.lrem("posts",0,postID);
+        Long size = jedis.llen("posts");
+
+        if(size == null || size == 0){
+            return;
+        }
+
+        for (long i = 0; i < size; i++) {
+            try{
+                String key = jedis.lindex("posts",i);
+                if(!key.equalsIgnoreCase(postID)){
+                    removeArray.add(key);
+                }
+            }catch (Exception ignore){}
+        }
+
+        jedis.rpush("posts",(String[])removeArray.toArray());
 
         jedis.del("facility."+postID,"time."+postID,"user."+postID,"date."+postID,"floor."+postID,"user-id."+post.getUserID());
 
