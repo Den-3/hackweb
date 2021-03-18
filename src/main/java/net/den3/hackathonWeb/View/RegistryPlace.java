@@ -39,7 +39,6 @@ public class RegistryPlace {
 
             }else{
                 ctx.render("/place-registry");
-                return;
             }
 
         });

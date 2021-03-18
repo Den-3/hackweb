@@ -1,21 +1,11 @@
 package net.den3.hackathonWeb;
 
 import io.javalin.Javalin;
-import net.den3.hackathonWeb.Entity.IUser;
 import net.den3.hackathonWeb.Store.*;
 import net.den3.hackathonWeb.View.*;
 import redis.clients.jedis.Jedis;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-import java.net.URI;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.X509Certificate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Main {
