@@ -107,6 +107,14 @@
             fetch("/place-registry", {
                 method: "POST",
                 body: fd
+            })
+            .then((response) => {
+                if(response.ok){
+                    location.href = "/";
+                }else{
+                    alert("送信に失敗しました");
+                    location.href = "/place";
+                }
             });
         }
         let location_droplist = document.getElementById("location_droplist");
