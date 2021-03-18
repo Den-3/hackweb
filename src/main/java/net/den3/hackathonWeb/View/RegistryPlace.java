@@ -10,7 +10,7 @@ import java.util.Optional;
 public class RegistryPlace {
     public RegistryPlace(Javalin javalin){
         javalin.get("/place-registry",ctx->{
-            ctx.render("/WEB-INF/templates/xxx.html");
+            ctx.render("/WEB-INF/templates/place_registry.html");
         });
 
         javalin.post("/place-registry",ctx->{

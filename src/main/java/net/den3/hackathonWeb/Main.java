@@ -43,6 +43,8 @@ public class Main {
         new SelfProfile(app);
         new PlaceUser(app);
         new RegistryPlace(app);
+        new UserStatus(app);
+        new RegistryPlace(app);
 
         app.get("/debug",ctx->{
             Map<String, Object> json = new HashMap<>();
