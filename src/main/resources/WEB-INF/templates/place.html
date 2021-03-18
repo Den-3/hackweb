@@ -76,7 +76,7 @@
             <div style="background: #ffffff; padding-left: 30px;">
                 <h1 th:text="|${searchWord}の検索結果|"></h1>
                 <a href="/"> << 戻る</a>
-                <div th:each="item : ${ users } style="margin-top: 30px; margin-bottom: 15px;">
+                <div th:each="item : ${users}" style="margin-top: 30px; margin-bottom: 15px;">
                     <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="big-avatar">
                     <a th:href="|/users/${item.getUUID()}|"><h2 style="display: inline-block;" th:text="${item.getNick()}"></h2></a>
                 </div>
