@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class Post {
 
-    private final static SimpleDateFormat sdf = new SimpleDateFormat("d日 hh時 mm分");
+    private final static SimpleDateFormat sdf = new SimpleDateFormat("d/hh:mm");
 
     Long date;
     String facility;
