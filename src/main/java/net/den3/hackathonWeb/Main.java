@@ -47,10 +47,9 @@ public class Main {
         new RegistryPlace(app);
 
         app.get("/debug",ctx->{
-            Map<String, Object> json = new HashMap<>();
-            json.put("users",userStore.getUsers());
-            json.put("posts",logStore.getPosts());
-            ctx.json(json);
+            Map<String,Object> m = new HashMap<>();
+            m.put("A","B");
+            ctx.json(m);
         });
 
         app.after(ctx->{ctx.res.setCharacterEncoding("UTF-8");});
