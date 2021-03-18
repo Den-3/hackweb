@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class Post {
 
-    private final static SimpleDateFormat sdf = new SimpleDateFormat("d/hh:mm");
+    private final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/HH:mm");
 
     Long date;
     String facility;
@@ -27,6 +27,9 @@ public class Post {
     }
 
     public String getTime() {
+        if(time == null){
+            return "null";
+        }
         return sdf.format(time);
     }
 
