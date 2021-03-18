@@ -15,10 +15,10 @@ public class PlaceUser {
         }
         String nick;
         String uuid;
-        String getNick(){
+        public String getNick(){
             return nick;
         }
-        String getUUID(){
+        public String getUUID(){
             return uuid;
         }
     }
