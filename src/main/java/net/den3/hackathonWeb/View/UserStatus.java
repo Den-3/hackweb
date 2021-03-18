@@ -18,9 +18,7 @@ public class UserStatus {
             if(session != null && Main.loginStore.isLoggedIn(session) && user.isPresent()){
                 Optional<IUser> u = Main.userStore.getUser(Main.loginStore.getUserUUID(session));
                 if(u.isPresent() && u.get().getUUID().equalsIgnoreCase(user.get().getUUID())){
-                    Map<String,IUser> self = new HashMap<>();
-                    self.put("self",u.get());
-                    ctx.render("/WEB-INF/templates/self_profile.html",self);
+                    ctx.redirect("/profile");
                     return;
                 }
             }
