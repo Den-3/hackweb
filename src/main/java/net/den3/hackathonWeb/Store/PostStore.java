@@ -37,8 +37,12 @@ public class PostStore implements IPostStore{
         jedis.rpush(key,String.valueOf(post.getDate()));
         jedis.expire(key,60*60);
 
+        key = "facility."+post.getUUID();
+        jedis.rpush(key,String.valueOf(post.getFacility()));
+        jedis.expire(key,60*60);
+
         key = "floor."+post.getUUID();
-        jedis.rpush(key,String.valueOf(post.getDate()));
+        jedis.rpush(key,String.valueOf(post.getFloor()));
         jedis.expire(key,60*60);
 
         this.posts.add(post);

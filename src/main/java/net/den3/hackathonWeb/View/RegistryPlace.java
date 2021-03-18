@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class RegistryPlace {
     public RegistryPlace(Javalin javalin){
-        javalin.get("/place-registry",ctx->{
+        javalin.get("/place",ctx->{
             ctx.render("/WEB-INF/templates/place_registry.html");
         });
 
@@ -19,7 +19,7 @@ public class RegistryPlace {
             String floor = ctx.formParam("floor");
 
             if(facility == null ||  floor == null){
-                ctx.render("/place-registry");
+                ctx.render("/place");
                 return;
             }
 
@@ -27,7 +27,7 @@ public class RegistryPlace {
             if(session != null && Main.loginStore.isLoggedIn(session)){
                 Optional<IUser> u = Main.userStore.getUser(Main.loginStore.getUserUUID(session));
                 if(!u.isPresent()){
-                    ctx.render("/place-registry");
+                    ctx.render("/place");
                     return;
                 }
 
@@ -38,7 +38,7 @@ public class RegistryPlace {
                 ctx.redirect("/");
 
             }else{
-                ctx.render("/place-registry");
+                ctx.render("/place");
             }
 
         });
