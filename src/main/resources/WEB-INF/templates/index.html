@@ -63,14 +63,20 @@
                 box-sizing: border-box;
                 justify-content: space-around;
             }
+            .location-container {
+                display: flex;
+                flex-wrap: wrap;
+                box-sizing: border-box;
+                justify-content: space-around;
+            }
             .location-block {
-                margin: 20px;
+                margin: 10px;
                 text-align: center;
             }
             .entry-button,
             .location-icon {
-                width: 100px;
-                height: 100px;
+                width: 150px;
+                height: 150px;
                 border-radius: 50%;
             }
             .empty-block {
@@ -79,9 +85,9 @@
                 padding-bottom: 0;
                 margin-top: 0;
                 margin-bottom: 0;
-                width: 100px;
-                margin-left: 20px;
-                margin-right: 20px;
+                width: 150px;
+                margin-left: 10px;
+                margin-right: 10px;
             }
 
             .box {
@@ -108,9 +114,11 @@
         </style>
         <div class="container">
             <div class="main">
-                <div class="location-block">
-                    <div onclick="registry()" class="location-block">
-                        <img src="https://i.imgur.com/G6A9Qw6.png" alt="居場所登録ボタン" class="entry-button">
+                <div class="location-container">
+                    <div class="location-block">
+                        <a href="./entry_location.html">
+                            <img src="./entry-button.png" alt="居場所登録ボタン" class="entry-button">
+                        </a>
                         <p></p>
                     </div>
                     <script>
