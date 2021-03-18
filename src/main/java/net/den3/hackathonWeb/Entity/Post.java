@@ -27,10 +27,7 @@ public class Post {
     }
 
     public String getTime() {
-        if(time == null){
-            return "null";
-        }
-        return sdf.format(time);
+        return sdf.format(new Date(date));
     }
 
     public Long getDate(){
