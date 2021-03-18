@@ -1,6 +1,7 @@
 package net.den3.hackathonWeb;
 
 import io.javalin.Javalin;
+import net.den3.hackathonWeb.Entity.Post;
 import net.den3.hackathonWeb.Store.*;
 import net.den3.hackathonWeb.View.*;
 import redis.clients.jedis.Jedis;
@@ -45,6 +46,8 @@ public class Main {
         new RegistryPlace(app);
         new UserStatus(app);
         new RegistryPlace(app);
+
+        Post.sdf.setTimeZone(Post.tzn);
 
         app.get("/debug",ctx->{
             Map<String,Object> m = new HashMap<>();

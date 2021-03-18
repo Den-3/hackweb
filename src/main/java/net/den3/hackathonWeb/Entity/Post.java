@@ -5,11 +5,13 @@ import net.den3.hackathonWeb.Main;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
+import java.util.TimeZone;
 import java.util.UUID;
 
 public class Post {
 
-    private final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/HH:mm");
+    public final static TimeZone tzn = TimeZone.getTimeZone("Asia/Tokyo");
+    public final static SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/HH:mm");
 
     Long date;
     String facility;
