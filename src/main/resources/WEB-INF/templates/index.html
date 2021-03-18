@@ -134,9 +134,9 @@
                     <div th:each="item : ${ logs }">
                         <div class="side-log-item" >
                             <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
-                            <a href="/user/" style="display: inline-block;" th:text="item.getUser().get().getNick()"></a>
+                            <a href="/user/" style="display: inline-block;" th:text="${item.getUser().get().getNick()}"></a>
                             <p style="margin: 10px">に入りました!</p>
-                            <p style="margin: 10px" th:text="item.getTime()"></p>
+                            <p style="margin: 10px" th:text="${item.getTime()}"></p>
                         </div>
                     </div>
                 </div>
