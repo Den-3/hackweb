@@ -122,7 +122,7 @@
                         <a th:href="@{|place/${i}}|">
                             <img src="https://www.w3schools.com/howto/img_avatar.png" alt="" class="location-icon">
                         </a>
-                        <p th:text="i"></p>
+                        <p th:text="|${i}|"></p>
                     </div>
                     <div th:each="i : ${ facilities.size() }">
                         <div class="empty-block"></div>
