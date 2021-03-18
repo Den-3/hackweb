@@ -53,16 +53,18 @@ public class PostStore implements IPostStore{
         }
 
         for (long i = 0; i < size; i++) {
-            String key = jedis.lindex("posts",i);
-            String user = jedis.get("user."+key);
-            String time = jedis.get("time."+key);
-            String facility = jedis.get("facility."+key);
-            String floor = jedis.get("floor."+key);
-            Long date = Long.parseLong(jedis.get("date."+key));
-            if(user == null || time == null || facility == null || floor == null){
-                continue;
-            }
-            posts.add(new Post(user,facility,floor,time,date));
+            try{
+                String key = jedis.lindex("posts",i);
+                String user = jedis.get("user."+key);
+                String time = jedis.get("time."+key);
+                String facility = jedis.get("facility."+key);
+                String floor = jedis.get("floor."+key);
+                Long date = Long.parseLong(jedis.get("date."+key));
+                if(user == null || time == null || facility == null || floor == null){
+                    continue;
+                }
+                posts.add(new Post(user,facility,floor,time,date));
+            }catch (Exception ignore){}
         }
         return posts;
     }
