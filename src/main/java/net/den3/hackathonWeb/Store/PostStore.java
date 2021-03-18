@@ -16,33 +16,52 @@ public class PostStore implements IPostStore{
         posts = _getPosts();
     }
 
+    private void removePose(Post post){
+        String postID = jedis.get("user-id."+post.getUserID());
+        if(postID == null){
+            return;
+        }
+
+        jedis.lrem("posts",0,postID);
+
+        jedis.del("facility."+postID,"time."+postID,"user."+postID,"date."+postID,"floor."+postID,"user-id."+post.getUserID());
+
+    }
+
     @Override
     public void addPost(Post post) {
+
+        removePose(post);
+
         jedis.rpush("posts", post.getUUID());
-        String key = "facility."+post.getUUID();
+        String key = post.getUUID();
         jedis.expire(key,60*60);
 
         jedis.rpush(key,post.getFacility());
         jedis.expire(key,60*60);
 
         key = "time."+post.getUUID();
-        jedis.rpush(key,post.getTime());
+        jedis.set(key,post.getTime());
         jedis.expire(key,60*60);
 
         key = "user."+post.getUUID();
-        jedis.rpush(key,post.getUserID());
+        jedis.set(key,post.getUserID());
+        jedis.expire(key,60*60);
+
+        key = "user-id."+post.getUserID();
+        jedis.set(key,post.getUUID());
         jedis.expire(key,60*60);
 
         key = "date."+ post.getUUID();
-        jedis.rpush(key,String.valueOf(post.getDate()));
+        jedis.set(key,String.valueOf(post.getDate()));
         jedis.expire(key,60*60);
 
         key = "facility."+post.getUUID();
-        jedis.rpush(key,String.valueOf(post.getFacility()));
+        jedis.set(key,String.valueOf(post.getFacility()));
         jedis.expire(key,60*60);
 
         key = "floor."+post.getUUID();
-        jedis.rpush(key,String.valueOf(post.getFloor()));
+        jedis.set(key,String.valueOf(post.getFloor()));
         jedis.expire(key,60*60);
 
         this.posts.add(post);
