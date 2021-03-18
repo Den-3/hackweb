@@ -5,36 +5,36 @@
     <title></title>
 </head>
 <body>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <style>
-        body {
-            text-align: center;
-        }
-        select {
-            border-radius: 0;
-	        border: none;
-	        border-bottom: 1px solid rgba(0,0,0, 0.3);
-            font-size: 20px;
-            text-align: center;
-        }
-        select:focus {
-            outline: none;
-        }
-        form {
-            text-align: center;
-            margin-top: 150px;
-        }
-        option {
-            text-align: center;
-        }
-        button {
-            font-size: 30px;
-        }
-    </style>
-    <form>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<style>
+    body {
+        text-align: center;
+    }
+    select {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0, 0.3);
+        font-size: 20px;
+        text-align: center;
+    }
+    select:focus {
+        outline: none;
+    }
+    form {
+        text-align: center;
+        margin-top: 150px;
+    }
+    option {
+        text-align: center;
+    }
+    button {
+        font-size: 30px;
+    }
+</style>
+<form>
     <div class="cp_ipselect">
         <select id="location_droplist">
-        <option value="" hidden disabled selected>居場所の選択</option>
+            <option value="" hidden disabled selected>居場所の選択</option>
 
         </select>
 
@@ -42,17 +42,17 @@
     <p>の</p>
     <div class="cp_ipselect">
         <select id="detail_location_droplist">
-        <option value="" hidden disabled selected>詳細</option>
+            <option value="" hidden disabled selected>詳細</option>
         </select>
 
     </div>
     <p>にいます</p>
-    </form>
-    <button type="submit" id="button" disabled>更新</button>
-    <script>
-        var json_data;
-        window.onload = function() {
-            axios.get('https://jsondata.okiba.me/v1/json/nEQGa210318070053')
+</form>
+<button type="submit" id="button" disabled>更新</button>
+<script>
+    var json_data;
+    window.onload = function() {
+        axios.get('https://jsondata.okiba.me/v1/json/nEQGa210318070053')
             .then(response => {
                 let data = response.data;
                 let locations = data.data;
@@ -67,51 +67,51 @@
                     doc.insertBefore(newOption, null);
                 }
             }).catch(error => {
-                console.log(error)
-            })
+            console.log(error)
+        })
+    }
+    function locationDroplistChange(){
+        const location_index = document.getElementById("location_droplist").value;
+        const detail_locations = json_data[location_index].floor;
+        document.getElementById("button").disabled = false;
+        let button = document.getElementById("button");
+        button.addEventListener('click', buttonPush);
+        let doc = document.getElementById("detail_location_droplist");
+        while(doc.lastChild){
+            doc.removeChild(doc.lastChild);
         }
-        function locationDroplistChange(){
-            const location_index = document.getElementById("location_droplist").value;
-            const detail_locations = json_data[location_index].floor;
-            document.getElementById("button").disabled = false;
-            let button = document.getElementById("button");
-            button.addEventListener('click', buttonPush);
-            let doc = document.getElementById("detail_location_droplist");
-            while(doc.lastChild){
-                doc.removeChild(doc.lastChild);
-            }
-            if(detail_locations.length === 1){
-                let newOption = document.createElement("option");
-                let newContent = document.createTextNode(detail_locations[0]);
-                newOption.appendChild(newContent);
-                newOption.setAttribute("value", 0);
-                newOption.setAttribute("selected", "");
-                doc.insertBefore(newOption, null);
-                return;
-            }
-            for (let i = 0; i < detail_locations.length; ++i){
-                const detail_location = detail_locations[i];
-                let newOption = document.createElement("option");
-                let newContent = document.createTextNode(detail_location);
-                newOption.appendChild(newContent);
-                newOption.setAttribute("value", i);
-                doc.insertBefore(newOption, null);
-            }
+        if(detail_locations.length === 1){
+            let newOption = document.createElement("option");
+            let newContent = document.createTextNode(detail_locations[0]);
+            newOption.appendChild(newContent);
+            newOption.setAttribute("value", 0);
+            newOption.setAttribute("selected", "");
+            doc.insertBefore(newOption, null);
+            return;
         }
-        function buttonPush(){
-            const location_index = document.getElementById("location_droplist").value;
-            const detail_location_index = document.getElementById("detail_location_droplist").value;
-            const fd = new FormData();
-            fd.set("name", json_data[location_index].name);
-            fd.set("floor", json_data[location_index].floor[detail_location_index]);
-            fetch("/place-registry", {
-                method: "POST",
-                body: fd
-            });
+        for (let i = 0; i < detail_locations.length; ++i){
+            const detail_location = detail_locations[i];
+            let newOption = document.createElement("option");
+            let newContent = document.createTextNode(detail_location);
+            newOption.appendChild(newContent);
+            newOption.setAttribute("value", i);
+            doc.insertBefore(newOption, null);
         }
-        let location_droplist = document.getElementById("location_droplist");
-        location_droplist.addEventListener("change", locationDroplistChange);
-    </script>
-    
+    }
+    function buttonPush(){
+        const location_index = document.getElementById("location_droplist").value;
+        const detail_location_index = document.getElementById("detail_location_droplist").value;
+        const fd = new FormData();
+        fd.set("name", json_data[location_index].name);
+        fd.set("floor", json_data[location_index].floor[detail_location_index]);
+        fetch("/place-registry", {
+            method: "POST",
+            body: fd
+        });
+    }
+    let location_droplist = document.getElementById("location_droplist");
+    location_droplist.addEventListener("change", locationDroplistChange);
+</script>
+
 </body>
 </html>
