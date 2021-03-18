@@ -47,16 +47,17 @@ public class Main {
     public static void main(String[] args) {
         Javalin app = Javalin.create().start(getHerokuAssignedPort());
 
-
         new LoginPage(app);
         new TopPage(app);
         new RegisterPage(app);
         new SelfProfile(app);
         new PlaceUser(app);
+        new RegistryPlace(app);
 
         app.get("/debug",ctx->{
-            Map<String, List<IUser>> json = new HashMap<>();
+            Map<String, Object> json = new HashMap<>();
             json.put("users",userStore.getUsers());
+            json.put("posts",logStore.getPosts());
             ctx.json(json);
         });
 

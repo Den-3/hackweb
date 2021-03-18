@@ -15,7 +15,12 @@ public class Post {
     String facility;
     String time;
     String userid;
+    String floor;
     String uuid = UUID.randomUUID().toString();
+
+    public String getFloor(){
+        return this.floor;
+    }
 
     public String getFacility() {
         return facility;
@@ -41,18 +46,20 @@ public class Post {
         return this.uuid;
     }
 
-    public Post(String userUUID,String facility){
+    public Post(String userUUID,String facility,String floor){
         this.userid = userUUID;
         this.facility = facility;
         Date d = new Date();
         this.time = sdf.format(d);
         this.date = d.getTime();
+        this.floor = floor;
 
     }
 
-    public Post(String userUUID, String facility,String time,Long date){
+    public Post(String userUUID, String facility,String floor,String time,Long date){
         this.userid = userUUID;
         this.facility = facility;
+        this.floor = floor;
         this.time = time;
         this.date = date;
     }

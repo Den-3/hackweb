@@ -37,6 +37,10 @@ public class PostStore implements IPostStore{
         jedis.rpush(key,String.valueOf(post.getDate()));
         jedis.expire(key,60*60);
 
+        key = "floor."+post.getFloor();
+        jedis.rpush(key,String.valueOf(post.getDate()));
+        jedis.expire(key,60*60);
+
         this.posts.add(post);
     }
 
@@ -53,11 +57,12 @@ public class PostStore implements IPostStore{
             String user = jedis.get("user."+key);
             String time = jedis.get("time."+key);
             String facility = jedis.get("facility."+key);
+            String floor = jedis.get("floor."+key);
             Long date = Long.parseLong(jedis.get("date."+key));
             if(user == null || time == null || facility == null){
                 continue;
             }
-            posts.add(new Post(user,facility,time,date));
+            posts.add(new Post(user,facility,floor,time,date));
         }
         return posts;
     }

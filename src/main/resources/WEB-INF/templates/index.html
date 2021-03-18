@@ -118,11 +118,13 @@
                             document.location = "/place-registry";
                         }
                     </script>
-                    <div class="location-block" th:each="i : ${#numbers.sequence(0, 9)}">
-                        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="斎藤記念館" class="location-icon">
-                        <p>斎藤記念館</p>
+                    <div class="location-block" th:each="i : ${ facilities }">
+                        <a th:href="@{|place/${i}}|">
+                            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="" class="location-icon">
+                        </a>
+                        <p th:text="i"></p>
                     </div>
-                    <div th:each="i : ${#numbers.sequence(0, 9)}">
+                    <div th:each="i : ${ facilities.size() }">
                         <div class="empty-block"></div>
                     </div>
                 </div>
