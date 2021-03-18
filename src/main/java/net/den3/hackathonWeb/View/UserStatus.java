@@ -18,9 +18,7 @@ public class UserStatus {
             if(session != null && Main.loginStore.isLoggedIn(session) && user.isPresent()){
                 Optional<IUser> u = Main.userStore.getUser(Main.loginStore.getUserUUID(session));
                 if(u.isPresent() && u.get().getUUID().equalsIgnoreCase(user.get().getUUID())){
-                    Map<String,IUser> self = new HashMap<>();
-                    self.put("self",u.get());
-                    ctx.render("/WEB-INF/templates/self_profile.html",self);
+                    ctx.redirect("/profile");
                     return;
                 }
             }
@@ -28,8 +26,9 @@ public class UserStatus {
             if(!user.isPresent()){
                 return;
             }
-            Map<String,IUser> profile = new HashMap<>();
-            profile.put("profile",user.get());
+            Map<String,String> profile = new HashMap<>();
+            profile.put("nick",user.get().getNick());
+            profile.put("status",Main.statusStore.isBusy(user.get().getUUID()) ? "授業中" : "暇");
             ctx.render("/WEB-INF/templates/profile.html",profile);
         });
     }

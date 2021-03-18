@@ -51,7 +51,7 @@ public class Post {
     public Post(String userUUID,String facility,String floor){
         this.userid = userUUID;
         this.facility = facility;
-        Date d = new Date();
+        Date d = new Date(new Date().getTime()+(3600000*9));
         this.time = sdf.format(d);
         this.date = d.getTime();
         this.floor = floor;
