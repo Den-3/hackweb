@@ -37,9 +37,11 @@ public class PostStore implements IPostStore{
             }catch (Exception ignore){}
         }
 
-        jedis.rpush("posts",(String[])removeArray.toArray());
+        jedis.rpush("posts",removeArray.toArray(new String[removeArray.size()]));
 
         jedis.del("facility."+postID,"time."+postID,"user."+postID,"date."+postID,"floor."+postID,"user-id."+post.getUserID());
+
+        removeArray.clear();
 
     }
 
