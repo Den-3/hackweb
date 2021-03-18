@@ -144,7 +144,7 @@
                     <div th:each="item : ${ logs }" style="background: #9AD4FE; margin-top: 10px; margin-bottom: 10px; margin-right: 10px; margin-left: 10px" >
                         <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
                         <a th:href="|/user/${item.getUserID()}|" style="display: inline-block;">
-                            <p>th:text="${item.getUser().get().getNick()}"</p>
+                            <p th:text="${item.getUser().get().getNick()}"></p>
                         </a>
                         <p style="margin: 10px" th:text="|${item.getFacility()} の ${item.getFloor()} に入りました|"></p>
                         <p style="margin: 10px" th:text="${item.getTime()}"></p>
