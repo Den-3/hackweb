@@ -43,6 +43,12 @@ public class PostStore implements IPostStore{
 
         removeArray.clear();
 
+        for (int i = 0; i < posts.size(); i++) {
+            if(posts.get(i).getUserID().equalsIgnoreCase(post.getUserID())){
+                posts.remove(i);
+            }
+        }
+
     }
 
     @Override
