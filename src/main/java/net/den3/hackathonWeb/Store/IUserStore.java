@@ -14,6 +14,13 @@ public interface IUserStore {
     Optional<IUser> getUser(String uuid);
 
     /**
+     * ユーザーを取得する
+     * @param mail メール
+     * @return ユーザー
+     */
+    Optional<IUser> getUserByMail(String mail);
+
+    /**
      * 全ユーザーを取得する
      * @return 全ユーザー
      */

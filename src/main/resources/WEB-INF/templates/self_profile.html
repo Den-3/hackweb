@@ -1,4 +1,7 @@
 <html>
+<head>
+    <meta charset="utf-8"/>
+</head>
 <style>
     p,a{
         font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
@@ -87,10 +90,10 @@
         <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="big-avatar">
     </div>
     <div style="text-align: center; margin-top: 30px">
-        <p>User Name</p>
+        <p th:text="|ユーザー名: ${userName}|"></p>
     </div>
     <div style="text-align: center; margin-top: 30px">
-        <p>ステータス: </p>
+        <p th:text="|ステータス: ${busy}|"></p>
         <div onclick="onStatusChangeClicked();" style="background: darkgrey; border-radius: 5px; width: 150px; height: 30px; display: inline-block;">
             <p style="margin: 0px">ではない</p>
             <script>
@@ -100,11 +103,14 @@
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(data),
+                        body: JSON.stringify({}),
                     })
-                    .then(response => response.json())
-                    .then(data => {
-                        location.reload();
+                    .then(response => {
+                        if(response.ok){
+                            location.reload();
+                        }else{
+                            alert("通信エラーが発生しました")
+                        }
                     })
                     .catch((error) => {
                         alert("通信エラーが発生しました")
@@ -115,6 +121,9 @@
     </div>
     <div style="text-align: center; margin-top: 30px">
         <p>最後に居た場所: </p>
+    </div>
+    <div style="text-align: center; margin-top: 30px">
+        <a href="/">戻る</a>
     </div>
 </div>
 </body>

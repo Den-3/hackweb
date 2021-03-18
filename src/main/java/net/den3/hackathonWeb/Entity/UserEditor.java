@@ -1,5 +1,7 @@
 package net.den3.hackathonWeb.Entity;
 
+import net.den3.hackathonWeb.Util.HashGenerator;
+
 public class UserEditor {
     private User user = new User();
     
@@ -21,6 +23,11 @@ public class UserEditor {
 
     public UserEditor setPass(String pass) {
         this.user.pass = pass;
+        return this;
+    }
+
+    public UserEditor setSecurePass(String pass) {
+        this.user.pass = HashGenerator.getSafetyPassword(pass,user.getUUID());
         return this;
     }
 
