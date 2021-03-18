@@ -131,10 +131,10 @@
             </div>
             <div class="sidebar">
                 <div>
-                    <div th:each="item : ${ logs }" class="side-log-item" >
+                    <div th:each="item : ${ logs }" style="background: #9AD4FE; margin-top: 10px; margin-bottom: 10px; margin-right: 10px; margin-left: 10px" >
                         <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
                         <a href="/user/" style="display: inline-block;" th:text="${item.getUser().get().getNick()}"></a>
-                        <p style="margin: 10px" th:text="|${item.getFacility()} に入りました|"></p>
+                        <p style="margin: 10px" th:text="|${item.getFacility()} の ${item.getFloor()} に入りました|"></p>
                         <p style="margin: 10px" th:text="${item.getTime()}"></p>
                     </div>
                 </div>
